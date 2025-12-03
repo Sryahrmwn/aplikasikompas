@@ -58,12 +58,14 @@ export function ErrorFallback({ error, resetError }: ErrorFallbackProps) {
       ) : null}
 
       <View style={styles.content}>
+        <Feather name="compass" size={64} color={theme.link} style={styles.icon} />
+        
         <ThemedText type="h1" style={styles.title}>
-          Something went wrong
+          Sensor App encountered an issue
         </ThemedText>
 
         <ThemedText type="body" style={styles.message}>
-          Please reload the app to continue.
+          Don't worry, your sensor data is safe. Please restart the app to recalibrate.
         </ThemedText>
 
         <Pressable
@@ -77,11 +79,12 @@ export function ErrorFallback({ error, resetError }: ErrorFallbackProps) {
             },
           ]}
         >
+          <Feather name="refresh-cw" size={20} color={theme.buttonText} style={styles.buttonIcon} />
           <ThemedText
             type="body"
             style={[styles.buttonText, { color: theme.buttonText }]}
           >
-            Try Again
+            Recalibrate Sensors
           </ThemedText>
         </Pressable>
       </View>
@@ -159,6 +162,9 @@ const styles = StyleSheet.create({
     width: "100%",
     maxWidth: 600,
   },
+  icon: {
+    marginBottom: Spacing.sm,
+  },
   title: {
     textAlign: "center",
     lineHeight: 40,
@@ -181,10 +187,13 @@ const styles = StyleSheet.create({
     zIndex: 10,
   },
   button: {
+    flexDirection: "row",
     paddingVertical: Spacing.lg,
     borderRadius: BorderRadius.md,
     paddingHorizontal: Spacing["2xl"],
     minWidth: 200,
+    alignItems: "center",
+    justifyContent: "center",
     shadowColor: "#000",
     shadowOffset: {
       width: 0,
@@ -193,6 +202,9 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.1,
     shadowRadius: 4,
     elevation: 3,
+  },
+  buttonIcon: {
+    marginRight: Spacing.sm,
   },
   buttonText: {
     fontWeight: "600",
